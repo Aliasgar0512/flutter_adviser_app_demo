@@ -1,0 +1,35 @@
+BLoc state management
+
+
+                ┌────────────────┐   
+                │       UI       │  
+                └────────────────┘   
+          Events ↓              ↑ State                
+                ┌────────────────┐ 
+                │      BLoC      │  
+                └────────────────┘
+                 ↓     Data     ↑        
+                ┌────────────────┐   
+                │ Business Logic │
+                │ (Domain Layer) │  
+                └────────────────┘            
+        
+
+-- so what happens here is when some event happens in UI, it comes in BLoC and 
+   then BLoC will sent the defined state for that event,
+  - for example, user pressed button at that time we are calling Bloc 
+    so that event will come to Bloc and at that time we are returning Loading 
+    state so user will see Loading indicator,
+  - meanwhile during that time Bloc will execute the business logic to get data 
+    from backend or will calculate something, and as soon as it gets the data 
+    back from the logic which was running asynchronously or any error if the execution 
+    fails the Bloc will send that response as loaded state and then UI will present 
+    the response as data or error.
+
+Flow/steps for this app using BLoC
+1 - get advise (event)-> button [to Bloc] from UI
+2 - state - Loading [from Bloc] to UI
+3 - Request advice [from Bloc] to Business logic(API calling)
+4 - Response(Advice) [to Bloc] from Business logic(API calling)
+5 - state - Loaded [from Bloc] to UI
+

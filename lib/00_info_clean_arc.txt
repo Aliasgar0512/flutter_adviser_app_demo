@@ -1,0 +1,53 @@
+Clean Architecture
+                     Widgets──────────────┐
+                        ↑                 │→ Application 
+                Presentation logic────────┘
+                        ↑
+                     Use Cases ───────────┐
+                        ↑                 │
+                     Entities             │→ Domain 
+                        │                 │
+                    Repository ───────────┘────┐
+                        ↑                      │
+               ┌───── Models ────┐             │
+         ┌───────────────┐ ┌───────────────┐   │→ Infrastructure
+         │ Remote Data   │ │  Local Data   │   │  
+         │     Sources   │ │    Sources    │───┘
+         └───────────────┘ └───────────────┘                   
+               ↑                    ↑  
+            Raw Data             Raw Data
+               │                    │
+              API                   DB
+
+
+It has three layers:
+
+-------- 1 - Application -----------
+-- Holds Stateless UI views
+-- Holds State management (view controller) which determines how we want to handle 
+    user events.
+--- basically holds the presentation logic(State management) or
+    which communicates with it.
+-- it will only and only holds the widgets and presentation logic(state management) 
+    related to it.
+
+--- presentation logic -> widgets(no logic)
+
+
+-------- 2 - Domain -----------
+-- Holds Business logic
+-- Data Entities(Data class/Model)
+-- Will communicate with Repository to fetch data which we will get in 
+Data Entities(data class) 
+
+-- Basically this will be the layer we will write our main code 
+
+-------- 3- Infrastructure -----------
+-- Handles communication via Repository
+-- Data Models
+
+-- so in here we will get raw ata from API or local database or from Both, and then 
+that raw data will be converted by the DataModels to our own object, which we will 
+get through Repository.
+
+

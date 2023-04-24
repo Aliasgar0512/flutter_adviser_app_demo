@@ -1,0 +1,21 @@
+BLoc using cubit
+- Cubits are a simpler way to implementing Bloc,while it does hold some disadvantages.
+
+- Block does provide a structured way to define Bloc pattern as it has specifically defined
+  [state], [state] and [Bloc] itself which is to divide every part and that creates a more readable and manageable 
+  code, but it does has some boiler plate code pattern and syntax which might be a bit complex and 
+  kind of overkill in Blob file for each [event].
+
+
+- Now in turn Cubit is more convenient and very simpler way to use Bloc as it reduces
+  boiler plate code, now it does hold some disadvantages like it does not have separate structure 
+  like Bloc pattern's [state], [event] and Bloc itself.
+
+
+- Now Cubit's pattern only has [state] and [cubit] itself, and is does not have [event] 
+  which means we can only create void function for events which also means it does not have 
+  two streams like Bloc has for [state] and [event] which helps use to track each of them and 
+  Cubit only has one for [state] and for [event] they are just void function we have to write in 
+  cubit file which
+
+
